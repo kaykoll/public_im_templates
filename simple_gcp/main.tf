@@ -80,7 +80,7 @@ output "external_ip_output" {
 # Variable definitions 
 #######################
 
-variable "credentials" {}
+#variable "credentials" {}
 variable "gc_credentials" {}
 
 variable "credential_path" {
