@@ -34,9 +34,9 @@ resource "google_compute_instance" "default" {
 	machine_type = var.gcp_machine_type
 
 	boot_disk {
-	initialize_params {
-	  image = var.gcp_image
-	}
+		initialize_params {
+		  image = var.gcp_image
+		}
 	}
 	# A default network is created for all GCP projects  
 	network_interface {
@@ -55,15 +55,7 @@ resource "google_compute_instance" "default" {
 		ssh-keys = "${var.gcp_linux_user}:${file("${local.credential_path}/${var.gcp_public_key_file}")}"
 	}
 
-	depends_on = [google_compute_firewall.ssh-automic-cp-sm-firewall]
-	
-	connection {
-		type	= "ssh"
-		user	= var.gcp_linux_user
-		private_key	= file("${local.credential_path}/${var.gcp_private_key_file}")
-		timeout		= "500s"
-		host = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
-	}		
+	depends_on = [google_compute_firewall.ssh-automic-cp-sm-firewall]		
 	
 	provisioner "automic_agent_install" {
   		destination = var.remote_working_dir
@@ -80,6 +72,14 @@ resource "google_compute_instance" "default" {
 #		variables = {
 #			UC_EX_IP_ADDR = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
 #		}
+
+		connection {
+			type	= "ssh"
+			user	= var.gcp_linux_user
+			private_key	= file("${local.credential_path}/${var.gcp_private_key_file}")
+			timeout		= "500s"
+			host = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
+		}
 	} 	   	
 }
 
