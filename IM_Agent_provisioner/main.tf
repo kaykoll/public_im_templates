@@ -182,10 +182,7 @@ variable "gcp_public_key_file" {
 	type = string
 	default = "gcp_public_key_file"
 }
-variable "gcp_image" {
-	type = string
-	default = "centos-8-v20191018"
-}
+
 variable "remote_working_dir" {
 	type = string
 	default = "remote_working_dir"
