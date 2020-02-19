@@ -169,3 +169,51 @@ variable "gcp_machine_type" {
 	default = "f1-micro"
 }
 
+variable "gcp_linux_user" {
+	type = string
+	default = "automic"
+}
+
+variable "gcp_private_key_file" {
+	type = string
+	default = "gcp_private_key_file"
+}
+variable "gcp_public_key_file" {
+	type = string
+	default = "gcp_public_key_file"
+}
+variable "gcp_image" {
+	type = string
+	default = "centos-8-v20191018"
+}
+variable "remote_working_dir" {
+	type = string
+	default = "remote_working_dir"
+}
+variable "agent_port" {
+	type = string
+	default = "agent_port"
+}
+variable "ae_system_name" {
+	type = string
+	default = "ae_system_name"
+}
+variable "ae_host" {
+	type = string
+	default = "ae_host"
+}
+variable "ae_port" {
+	type = string
+	default = "ae_port"
+}
+variable "sm_port" {
+	type = string
+	default = "sm_port"
+}
+variable "sm_name" {
+	type = string
+	default = "sm_name"
+}
+
+
+
