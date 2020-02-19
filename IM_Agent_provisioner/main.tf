@@ -62,7 +62,7 @@ resource "google_compute_instance" "default" {
   		destination = var.remote_working_dir
 		source = "/home/automic/agentfiles/"
 
-		agent_name = "${random_string.append_string.result}"
+		agent_name = random_string.append_string.result
 		agent_port = var.agent_port
 		ae_system_name = var.ae_system_name
 		ae_host = var.ae_host
@@ -91,6 +91,12 @@ locals {
 resource "random_integer" "name_extension" {
   min     = 1
   max     = 99999
+}
+
+resource "random_string" "append_string" {
+	length  = 10
+	special = false
+	lower   = false
 }
 
 
