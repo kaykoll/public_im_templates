@@ -59,15 +59,15 @@ resource "google_compute_instance" "default" {
 	
 	
 	provisioner "automic_agent_install" {
-  		destination = "${var.remote_working_dir}"
+  		destination = var.remote_working_dir
 		source = "/home/automic/agentfiles/"
 
 		agent_name = "${random_string.append_string.result}"
-		agent_port = "${var.agent_port}"
-		ae_system_name = "${var.ae_system_name}"
-		ae_host = "${var.ae_host}"
-		ae_port = "${var.ae_port}"
-		sm_port = "${var.sm_port}"
+		agent_port = var.agent_port
+		ae_system_name = var.ae_system_name
+		ae_host = var.ae_host
+		ae_port = var.ae_port
+		sm_port = var.sm_port
 		sm_name = "${var.sm_name}${random_string.append_string.result}"
 
 		variables = {
@@ -77,7 +77,7 @@ resource "google_compute_instance" "default" {
 		connection {
 			host = self.public_ip
 			type = "ssh"
-			user = "${var.gcp_linux_user}"
+			user = var.gcp_linux_user
 			private_key = "${file("${local.credential_path}/${var.gcp_private_key_file}")}"
 		}
   	}   	
