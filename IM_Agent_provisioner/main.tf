@@ -8,7 +8,7 @@ locals {
 provider "google" {
 #  Terraform commandline uses environment variable GOOGLE_CLOUD_KEYFILE_JSON=<GCP JSON>. 
 #  -> IM uses the values defined in the CDA Infrastructure Provider
-	credentials = var.credentials
+	credentials = var.gc_credentials
 	project     = var.gcp_project
 	region      = var.gcp_region
 }
@@ -131,7 +131,7 @@ output "external_ip_output" {
 # Variable definitions 
 #######################
 
-variable "credentials" {}
+variable "gc_credentials" {}
 
 variable "credential_path" {
 	type = string
