@@ -71,17 +71,16 @@ resource "google_compute_instance" "default" {
 		sm_name = "${var.sm_name}${random_string.append_string.result}"
 
 #		variables = {
-#			UC_EX_IP_ADDR = "${self.public_ip}"
+#			UC_EX_IP_ADDR = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
 #		}
 
-		connection {
-			host = self.public_ip
-			type = "ssh"
-			user = var.gcp_linux_user
-			private_key = "${file("${local.credential_path}/${var.gcp_private_key_file}")}"
-		}
-  	}   	
-
+	connection {
+		type	= "ssh"
+		user	= var.gcp_linux_user
+		private_key	= file("${local.credential_path}/${var.gcp_private_key_file}")
+		timeout		= "500s"
+		host = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
+	}	 	   	
 }
 
 locals {
