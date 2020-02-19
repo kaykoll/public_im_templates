@@ -70,9 +70,9 @@ resource "google_compute_instance" "default" {
 		sm_port = var.sm_port
 		sm_name = "${var.sm_name}${random_string.append_string.result}"
 
-		variables = {
-			UC_EX_IP_ADDR = "${self.public_ip}"
-		}
+#		variables = {
+#			UC_EX_IP_ADDR = "${self.public_ip}"
+#		}
 
 		connection {
 			host = self.public_ip
