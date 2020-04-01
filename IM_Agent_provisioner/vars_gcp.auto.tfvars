@@ -12,7 +12,7 @@ gcp_public_key_file = "kay_koll_demos-esd-auto-emea-psl.pub"
 #&project=kubernetes-intro-251515&folder&organizationId&tab=images&imagessize=50
 
 gcp_image = "centos-8-v20191018"
-remote_working_dir = "/tmp/AE"
+remote_working_dir = "/opt/automic"
 agent_port = "2300"
 ae_system_name = "AUTOMIC"
 ae_host = "10.109.40.4"
