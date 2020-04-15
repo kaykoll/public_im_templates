@@ -105,24 +105,28 @@ resource "random_string" "append_string" {
 # Defining the Output
 #######################
 
+output "hostname" {
+	description = "[Hostname]"
+	value       = random_string.append_string.result
+}
 
 output "instance_name" {
-	description = "Instance name"
+	description = "[Instance name]"
 	value       = google_compute_instance.default.*.name[0]
 }
 
 output "project_output" {
-	description = "Project name"
+	description = "[Project name]"
 	value       = google_compute_instance.default.*.project[0]
 }
 
 output "internal_ip_output" {
-	description = "Internal IP"
+	description = "[Internal IP]
 	value       = google_compute_instance.default.*.network_interface.0.network_ip
 }
 
 output "external_ip_output" {
-	description = "External IP "
+	description = "[External IP]"
 	value 		= google_compute_instance.default.*.network_interface.0.access_config.0.nat_ip
 }
 
